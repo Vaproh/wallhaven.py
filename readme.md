@@ -97,7 +97,7 @@ Wallhaven.py is a Python library designed to simplify interactions with the Wall
 
 ###  Prerequisites
 
-**Python**: `version x.y.z`
+**Python**: `version 3.12.5`
 
 ###  Installation
 
@@ -113,7 +113,12 @@ Build the project from source:
 ❯ cd wallhaven.py
 ```
 
-3. Install the required dependencies:
+3. Create an virtual envirourment:
+```sh
+❯ python -m venv .venv 
+```
+
+4. Install the required dependencies:
 ```sh
 ❯ pip install -r requirements.txt
 ```
@@ -131,16 +136,14 @@ To run the project, execute the following command:
 Execute the test suite using the following command:
 
 ```sh
-❯ pytest
+❯ python -m unittest discover
 ```
 
 ---
 
 ##  Project Roadmap
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
+- [ ] **`Task 1`**: <strike>Make it more secure?</strike>
 
 ---
 
@@ -177,26 +180,16 @@ Contributions are welcome! Here are several ways you can contribute:
 8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
 </details>
 
-<details closed>
-<summary>Contributor Graph</summary>
-<br>
-<p align="left">
-   <a href="https://git.vaproh.xyz{/vaproh/wallhaven.py/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=vaproh/wallhaven.py">
-   </a>
-</p>
-</details>
-
 ---
 
 ##  License
 
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+This project is protected under the [GNU GPL](https://www.gnu.org/licenses/gpl-3.0.en.html) License. For more details, refer to the [LICENSE](https://www.gnu.org/licenses/gpl-3.0.en.html) file.
 
 ---
 
 ##  Acknowledgments
 
-- List any resources, contributors, inspiration, etc. here.
+- Thanks to this [Article](https://www.pretzellogix.net/2021/12/08/how-to-write-a-python3-sdk-library-module-for-a-json-rest-api/) for guiding me. 
 
 ---
