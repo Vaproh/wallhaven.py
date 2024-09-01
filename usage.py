@@ -1,6 +1,6 @@
 from wallhaven import WallhavenPY
 
-client = WallhavenPY(api_key="RrikSnfd9HqmnoyIrsy1403Fld7ZtPeo")
+client = WallhavenPY(api_key="api key here")
 collection_data = client.get(endpoint="collections")
 print(collection_data)
 
