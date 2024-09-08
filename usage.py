@@ -1,10 +1,9 @@
 from wallhaven import WallhavenPY
 
-client = WallhavenPY(api_key="api key here")
-collection_data = client.get(endpoint="collections")
-print(collection_data)
+client = WallhavenPY()
 
-search_results = client.search(
-    categories="111", purity="100", sorting="random", order="desc", page=1
-)
-print(search_results)
+wall = client.search()
+
+print(wall)
+
+client.save_as_json(data=wall, file_path="test.json")

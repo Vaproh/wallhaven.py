@@ -201,59 +201,21 @@ class WallhavenPY:
         endpoint = f"tag/{tag_id}"
         return self.get(endpoint)
 
-    def random_wallpapers(
-        self, categories: Optional[str] = None, purity: Optional[str] = None
-    ) -> Dict:
+    def save_as_json(self, data: Dict, file_path: str) -> None:
         """
-        Retrieve a set of random wallpapers.
+        Save the provided data as a JSON file.
 
         Args:
-            categories (Optional[str]): Categories to filter by.
-            purity (Optional[str]): Purity filter for SFW, Sketchy, NSFW.
-
-        Returns:
-            Dict: The JSON response containing random wallpapers.
+            data (Dict): The data to be saved as a JSON file.
+            file_path (str): The path where the JSON file will be saved.
 
         Raises:
-            WallhavenAPIError: If an error occurs during the request or response processing.
+            WallhavenAPIError: If an error occurs while writing the file.
         """
-        query_params = {
-            "categories": categories,
-            "purity": purity,
-        }
-        full_url = self.url.format("random")
-        headers = {"X-API-KEY": self._api_key} if self._api_key else {}
         try:
-            response = requests.get(
-                url=full_url,
-                params={k: v for k, v in query_params.items() if v is not None},
-                verify=self._ssl_verify,
-                headers=headers,
-            )
-            response.raise_for_status()  # Raises HTTPError for bad responses
-            data_out = response.json()
-            return data_out
-        except requests.exceptions.HTTPError as http_err:
-            raise WallhavenAPIError(f"HTTP error occurred: {http_err}")
-        except requests.exceptions.RequestException as req_err:
-            raise WallhavenAPIError(f"Request error occurred: {req_err}")
-        except ValueError as json_err:
-            raise WallhavenAPIError(f"Error parsing JSON: {json_err}")
-
-        def save_as_json(self, data: Dict, file_path: str) -> None:
-            """
-            Save the provided data as a JSON file.
-
-            Args:
-                data (Dict): The data to be saved as a JSON file.
-                file_path (str): The path where the JSON file will be saved.
-
-            Raises:
-                WallhavenAPIError: If an error occurs while writing the file.
-            """
-            try:
-                with open(file_path, 'w') as json_file:
-                    json.dump(data, json_file, indent=4)
-                print(f"Data successfully saved to {file_path}")
-            except IOError as io_err:
-                raise WallhavenAPIError(f"Error saving data to {file_path}: {io_err}")
+            with open(file_path, "w") as json_file:
+                json.dump(data, json_file, indent=4)
+            print(f"Data successfully saved to {file_path}")
+        except IOError as io_err:
+            raise WallhavenAPIError(f"Error saving data to {
+                                    file_path}: {io_err}")
